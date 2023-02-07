@@ -1,30 +1,67 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<div class="wrapper" :class="theme === 'light' ? themeClasses[0] : themeClasses[1]">
+		
+		<headerBlock :theme="theme" @switchTheme="getTheme"/>
+
+		<result-screen/>
+
+		<buttons-panel/>
+	</div>
 </template>
+ 
+<script>
+import headerBlock from './components/Header';
+import resultScreen from './components/ResultScreen';
+import buttonsPanel from './components/ButtonsPanel';
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+	components: {
+		headerBlock,
+		resultScreen,
+		buttonsPanel
+	},
+
+	data() {
+		return {
+			themeClasses: ['light-theme', 'dark-theme'],
+			theme: '',
+		}
+	},
+
+	methods: {
+		getTheme(theme) {
+			this.theme = theme;
+		}
+	}
+
 }
+</script>
 
-nav {
-  padding: 30px;
-}
+<style lang="scss">
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+@import './assets/nullstyle.css';
 
-nav a.router-link-exact-active {
-  color: #42b983;
+$defaultTransitionsConfig: all 0.3s ease 0s;
+$LightThemeFontColor: rgb(110, 110, 110);
+$LightThemeBGColor: white;
+$DarkThemeBGColor: #0d0e0e;
+$DarkThemeFontColor: whitesmoke;
+// $LightThemeButtonBGcolor: #d8d5d5
+
+.wrapper {
+	width: 100%;
+	height: 100vh;
+	transition: $defaultTransitionsConfig;
+	&.light-theme {
+		background-color: $LightThemeBGColor;
+		color: $LightThemeFontColor;
+	}
+
+	&.wrapper.dark-theme {
+		background-color: $DarkThemeBGColor;
+		color: $DarkThemeFontColor;
+	}
 }
 </style>
+
+// single file component
