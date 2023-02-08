@@ -44,22 +44,21 @@ export default {
 	},
 
 	methods: {
-		buttonPressed() {
-			console.log(this);
+		buttonPressed(e) {
+			this.$emit('buttonPressed', e.target.textContent)
 		}
 	}
 
-	// props: {
-	// 	buttons: {
-	// 		type: Array,
-	// 		required: true
-	// 	}
-	// }
 }
 </script>
 
 <style lang="scss" scoped>
+
+	@import '../styles/main.scss';
+
 	.buttons-panel {
+		max-width: 530px;
+		min-width: 400px;
 		width: 100%;
 		height: 60vh;
 		display: grid;
@@ -67,7 +66,8 @@ export default {
 		grid-template-rows: repeat(5, 70px);
 		justify-content: space-between;
     align-content: space-evenly;
-		padding: 20px;
+		padding: 0 20px 40px;
+		margin: 0 auto;
 	}
 
 	.button {
@@ -79,31 +79,30 @@ export default {
 			cursor: pointer;
 			text-align: center;
 			background-color: rgba($color: #d8d5d5, $alpha: 0);
-			transition: all 0.3s ease 0s;
+			transition: $defaultTransitionsConfig;
 			&:hover {
 				background-color: rgba($color: #d8d5d5, $alpha: 0.3);
 			}
 		}
 
-</style>
+	@media(min-width: 530px) {
+		.buttons-panel {
+			max-width: 700px;
+			grid-template-columns: repeat(4, 100px);
+			grid-template-rows: repeat(5, 100px);
+		}
 
-			<!-- <div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-			<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-			<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-			<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-			<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div>
-				<div><p>1</p></div> -->
+		.button {
+			font-size: 2.5em;
+		}
+	}
+
+	@media(max-width: 391px) {
+		.buttons-panel {
+			min-width: 320px;
+			grid-template-columns: repeat(4, 40px);
+			grid-template-rows: repeat(5, 40px);
+		}
+	}
+
+</style>

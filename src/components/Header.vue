@@ -23,16 +23,12 @@ export default {
 		}
 	},
 
-	// props: {
-	// 	theme: {
-	// 		type: String,
-	// 		required: true
-	// 	}
-	// }
 }
 </script>
 
 <style lang="scss" scoped>
+
+	@import '../styles/main.scss';
 
 	.header {
 		width: 100%;
@@ -44,7 +40,7 @@ export default {
 		top: 20px;
 		right: 20px;
 		cursor: pointer;
-		transition: all 0.3s ease 0s;
+		transition: $defaultTransitionsConfig;
 		&:hover {
 			opacity: 0.8;
 		}
