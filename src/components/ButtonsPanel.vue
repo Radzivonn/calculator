@@ -45,7 +45,7 @@ export default {
 
 	methods: {
 		buttonPressed(e) {
-			this.$emit('buttonPressed', e.target.textContent)
+			this.$emit('buttonPressed', e.target.textContent);
 		}
 	}
 
