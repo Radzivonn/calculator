@@ -1,4 +1,4 @@
-# Simple calculator on Vue.js 3
+# [Calculator app](https://radzivonn.github.io/calculator/index.html)
 
 ![image](https://github.com/Radzivonn/calculator/assets/106487154/acd1c4c1-f1e1-484d-8378-9db0cf3c9a8c)
 
